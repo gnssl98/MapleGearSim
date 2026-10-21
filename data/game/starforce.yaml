@@ -1,0 +1,84 @@
+# 스타포스 수치 테이블 (일반 장비)
+# 근거: docs/research/03_starforce.md
+# 기준 패치: KMS 1.2.413 (2026-03-19) — 스타캐치 삭제, ×1.05 상시 적용, 하락 없음, 흔적 직전 성급 저장
+version: kms_2026-03-19
+catch_multiplier: 1.05  # 성공 = 기본성공 × 1.05, 파괴는 (1-성공)을 기존 유지:파괴 비율로 재분배
+
+# 현재 성급 S에서 S+1 시도 시 기본(공지) 확률 [%]
+base_success: [95, 90, 85, 85, 80, 75, 70, 65, 60, 55,
+               50, 45, 40, 35, 30, 30, 30, 15, 15, 15,
+               30, 15, 15, 10, 10, 10, 7, 5, 3, 1]
+base_destroy: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+               0, 0, 0, 0, 0, 2.1, 2.1, 6.8, 6.8, 8.5,
+               10.5, 12.75, 17, 18, 18, 18, 18.6, 19, 19.4, 19.8]
+
+# 1회 비용 = round_100(1000 + L^3 × (S+1)^e / d)
+cost:
+  low:  {max_star: 9, exponent: 1, divisor: 36}   # S = 0~9
+  high_exponent: 2.7
+  high_divisor:   # S = 10~29
+    10: 571
+    11: 314
+    12: 214
+    13: 157
+    14: 107
+    15: 200
+    16: 200
+    17: 150
+    18: 70
+    19: 45
+    20: 200
+    21: 125
+    22: 200
+    23: 200   # 22~29성 200: starforce.gg·mesu.live·위키 일치 (docs/research/08)
+    24: 200
+    25: 200
+    26: 200
+    27: 200
+    28: 200
+    29: 200
+unverified_cost_stars: []
+
+discount:
+  mvp_rate: {none: 0, bronze: 0, silver: 0.03, gold: 0.05, diamond: 0.10, red: 0.10, black: 0.10}  # 블랙 ⚠ (공식 혜택표는 다이아·레드 10%까지만 표기)
+  pc_room_rate: 0.05
+  mvp_max_star_default: 16   # 현재 성급 S ≤ 16 적용 (계산기 4곳 일치, docs/research/08)
+  event_discount: 0.30
+
+safeguard:
+  stars: [15, 16, 17]        # 파괴방지 가능 현재 성급
+  extra_cost_ratio: 2.0      # 기본 비용의 +200%, 할인 미적용
+
+events:
+  destroy_reduction: {multiplier: 0.7, max_star: 21}  # 현재 성급 ≤ 21
+  guaranteed_stars: [5, 10, 15]                         # 5/10/15성 100% 이벤트
+  plus_one_max_star: 10                                 # 10성 이하 1+1
+  recovery_meso_discount: 0.20                          # 흔적 복구 메소 20% 할인
+
+recovery:
+  basic_star: 12             # 기본 복구: 동일 장비 1개 → 12성, 메소 없음 (공식 가이드)
+  max_restore_star: 22       # 23성 이상 파괴 시 22성으로 저장
+  # 확정 복구(파괴 직전 성급): 필요 동일 장비 수(공식)
+  # 메소: 아래 레벨별 표(억, mesu.live·starforce.gg·나무위키 일치) 우선, 표에 없는 레벨은 coef × L^3
+  restore:
+    15: {spares: 1, meso_coef: 54.14}
+    16: {spares: 1, meso_coef: 130.5}
+    17: {spares: 1, meso_coef: 220.5}
+    18: {spares: 1, meso_coef: 500.5}
+    19: {spares: 2, meso_coef: 830.5}
+    20: {spares: 2, meso_coef: 1463.2}
+    21: {spares: 3, meso_coef: 1838.6}
+    22: {spares: 4, meso_coef: 3021.1}
+  restore_meso_table_eok:
+    160: {15: 2.22, 16: 5.35, 17: 9.03, 18: 20.5, 19: 34.02, 20: 59.93, 21: 75.31, 22: 123.74}
+    200: {15: 4.33, 16: 10.44, 17: 17.64, 18: 40.05, 19: 66.44, 20: 117.06, 21: 147.09, 22: 241.68}
+    250: {15: 8.46, 16: 20.39, 17: 34.46, 18: 78.21, 19: 129.77, 20: 228.63, 21: 287.28, 22: 472.04}
+
+# 착용 레벨별 최대 성급 (일반 장비)
+max_star_by_level:
+  - {min_level: 0,   max_star: 5}
+  - {min_level: 95,  max_star: 8}
+  - {min_level: 108, max_star: 10}
+  - {min_level: 118, max_star: 15}
+  - {min_level: 128, max_star: 20}
+  - {min_level: 138, max_star: 30}

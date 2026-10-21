@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Node
+frontend/node_modules/
+
+# 사용자 데이터 (시세 기록, 설정, API 키)
+data/user/*
+!data/user/.gitkeep
+data/cache/
+.env
+
+.DS_Store

@@ -1,0 +1,35 @@
+# 잠재능력 / 에디셔널 메소 재설정 수치
+# 근거: docs/research/04_potential_additional_options.md §2.2~2.4
+# 기준: 잠재 메소 재설정(2024-01-25), 에디 메소 재설정(2024-06-20, Update/746). 2026-10 변경 공지 없음 ⚠ 인게임 미검증
+version: kms_2024-06-20
+grades: [rare, epic, unique, legendary]
+
+methods:
+  potential:   # 잠재능력 재설정(메소) = 블랙 큐브 확률
+    label: 잠재능력 재설정
+    grade_up: {rare: 0.15, epic: 0.035, unique: 0.014}   # 현재 등급 → 다음 등급
+    pity:     {rare: 10,   epic: 42,    unique: 107}      # N회째 재설정에서 등급 상승 보장
+    # 1회 비용 (현재 등급 기준). 레벨 구간: [min_level, ...]
+    cost:
+      - {min_level: 0,   rare: 4000000, epic: 16000000, unique: 34000000,   legendary: 40000000}
+      - {min_level: 160, rare: 4250000, epic: 17000000, unique: 36125000,   legendary: 42500000}
+      - {min_level: 200, rare: 4500000, epic: 18000000, unique: 38250000,   legendary: 45000000}
+      - {min_level: 250, rare: 5000000, epic: 20000000, unique: 42500000,   legendary: 50000000}
+  additional:  # 에디셔널 잠재능력 재설정(메소)
+    label: 에디셔널 재설정
+    grade_up: {rare: 0.02381, epic: 0.009804, unique: 0.007}
+    pity:     {rare: 62,      epic: 152,      unique: 214}
+    cost:
+      - {min_level: 0,   rare: 9750000,  epic: 27300000, unique: 66300000, legendary: 78000000}
+      - {min_level: 160, rare: 10375000, epic: 29050000, unique: 70550000, legendary: 83000000}
+      - {min_level: 200, rare: 11000000, epic: 30800000, unique: 74800000, legendary: 88000000}
+      - {min_level: 250, rare: 12250000, epic: 34300000, unique: 83300000, legendary: 98000000}
+
+miracle_time_multiplier: 2.0   # 등급 상승 확률만 2배 (천장 처리 미확인 ⚠)
+
+# 세 줄 중 개수 제한이 있는 옵션 그룹 (공식 안내)
+line_limits:
+  - {pattern: "쓸만한", max: 1}
+  - {pattern: "피격 후 무적시간", max: 1}
+  - {pattern: "데미지의 \\d+% 무시", max: 2}
+  - {pattern: "초간 무적", max: 2}

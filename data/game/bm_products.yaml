@@ -1,0 +1,125 @@
+# 확률형 BM 상품 분류 · 구매 방법(묶음) 가격
+# kind:
+#   fixed  — 확률이 거의 바뀌지 않는 상시 상품. 확률표는 data/game/bm_tables.json(하드코딩 스냅숏)만 쓴다.
+#   event  — 구성·확률이 주기적으로 바뀌는 상품(로얄·마스터피스·콜라보·기간 판매 등). 한 달마다 공식 확률 페이지에서 새로 받는다.
+#   목록에 없는 새 상품은 event 로 본다.
+# options: 구매 방법 [{label, count(개수), price(원=캐시), where}] — 화면에서 고르면 그 묶음 단위로 계산.
+#   공식 캐시샵 공지·메이플 상점은 가격이 이미지/스크립트라 자동으로 읽지 못해서, 출처가 있는 값만 넣었다.
+#   price_date 이후 캐시샵 공지가 올라오면 화면에 "가격 확인" 알림.
+# note: 판매 종료·직접 구매 불가 등 안내.
+products:
+  RoyalStyle:
+    kind: event
+    price_date: 2026-08-19
+    price_source: "나무위키 '로얄 스타일' (개당 2,200캐시, 1·10·25·45개 단위, 대량 구매 할인 없음) · '캐시 아이템' (로얄 팩 28,600원 = 13개 + 보너스)"
+    options:
+      - {label: 낱개, count: 1, price: 2200, where: 캐시샵}
+      - {label: 10개, count: 10, price: 22000, where: 캐시샵}
+      - {label: 25개, count: 25, price: 55000, where: 캐시샵}
+      - {label: 45개, count: 45, price: 99000, where: 캐시샵}
+      - {label: 로얄 팩 (13개 + 보너스), count: 13, price: 28600, where: 캐시샵}
+  MasterpieceRed:
+    kind: event
+    note: "로얄스타일 스페셜 라벨을 합성해서 얻는 아이템이라 직접 살 수 없어요. 2026-08-20부터 프리미엄 마스터피스로 통합 (나무위키)"
+  MasterpieceBlack:
+    kind: event
+    note: "로얄스타일 스페셜 라벨을 합성해서 얻는 아이템이라 직접 살 수 없어요. 2026-08-20부터 프리미엄 마스터피스로 통합 (나무위키)"
+  SpiegelmannMagicHat:
+    kind: event
+    price_date: 2025-09-18
+    price_source: "인벤 웹진 '일루전 링 QnA' · 분석 글 (마법모자·거대한 마법모자 각 9,900캐시, 10회 99,000캐시 — 묶음 할인 없음)"
+    options:
+      - {label: 낱개, count: 1, price: 9900, where: 캐시샵}
+      - {label: 10개, count: 10, price: 99000, where: 캐시샵}
+  MysticCollection:
+    kind: event
+    price_date: 2026-10-15
+    price_source: "나무위키 '메이플스토리/캐시 아이템' (1,000캐시)"
+    options: [{label: 낱개, count: 1, price: 1000, where: 캐시샵}]
+  GrandCollection:
+    kind: event
+    price_date: 2026-10-15
+    price_source: "나무위키 '메이플스토리/캐시 아이템' (3,000캐시)"
+    options: [{label: 낱개, count: 1, price: 3000, where: 캐시샵}]
+  CoordiFrieren:
+    kind: event
+    price_date: 2026-02-12
+    price_source: "인벤 실시간 소식 '장송의 프리렌 코디 컬렉션' · 테섭 요약 (개당 9,900캐시, 넥슨캐시 전용, 2026-02-12 ~ 03-18 판매)"
+    note: "2026-03-18 판매 종료된 콜라보 상품이에요. 재판매 때 가격을 확인하세요"
+    options: [{label: 낱개, count: 1, price: 9900, where: 캐시샵}]
+  GoodsFrieren:
+    kind: event
+    price_date: 2026-02-12
+    price_source: "인벤 테섭 요약 (개당 3,300캐시) ⚠ 테스트 서버 기준"
+    note: "2026-03-18 판매 종료된 콜라보 상품이에요. 재판매 때 가격을 확인하세요"
+    options: [{label: 낱개, count: 1, price: 3300, where: 캐시샵}]
+  CatchTeeniepingGoodsCollection:
+    kind: event
+    price_date: 2026-09-17
+    price_source: "인벤 '캐치! 티니핑 굿즈 컬렉션 누적 사용 보상' (2026-09-10, 개당 9,900캐시 · 10회 99,000캐시)"
+    options:
+      - {label: 낱개, count: 1, price: 9900, where: 캐시샵}
+      - {label: 10개, count: 10, price: 99000, where: 캐시샵}
+  BoutiqueGift:
+    kind: event
+    price_date: 2025-10-23
+    price_source: "디스이즈게임·볼텍스게이밍 할로윈 부티크 글 (개당 3,300캐시, 10회마다 피버 타임)"
+    note: "부티크 티켓을 뽑는 상품이에요. 확률표 기준 기프트 1개당 티켓 기댓값 ≈ 3.28개(10회마다 피버 포함) → 티켓 1개 ≈ 1,007원"
+    options: [{label: 낱개, count: 1, price: 3300, where: 캐시샵}]
+  CoordiRandomBox:
+    kind: event
+    price_date: 2026-02-24
+    price_source: "인벤 자유게시판 (2026-02-24, 부티크 티켓 5개로 교환) × 부티크 기프트 환산 티켓 1개 ≈ 1,007원"
+    note: "캐시로 직접 살 수 없고 부티크 티켓 5개로 교환해요. 가격은 부티크 기프트 기댓값으로 환산한 값이라 운에 따라 실제 비용이 크게 달라요"
+    options: [{label: 부티크 티켓 5개 (환산), count: 1, price: 5036, where: 부티크 티켓}]
+  WispsWonderBerry:
+    kind: event
+    price_date: 2026-09-12
+    price_source: "나무위키 '위습의 원더베리' (낱개 5,400원 · 11개 54,000원 · 넥슨쇼핑 21개 100,000원), 캐시샵 공지 2023-10-26 (스페셜 프라이스 팩 113,400 → 100,000원)"
+    options:
+      - {label: 낱개, count: 1, price: 5400, where: 캐시샵}
+      - {label: 11개, count: 11, price: 54000, where: 캐시샵}
+      - {label: 스페셜 프라이스 팩 21개, count: 21, price: 100000, where: 메이플 상점}
+  SpecialLunaCrystalSweet:
+    kind: event
+    note: "가격 자료를 찾지 못했어요 (공지·커뮤니티 모두 이미지로만 표기). 일반 루나 크리스탈(3,900원)과 다를 수 있으니 '직접 입력'으로 넣어 주세요"
+  SpecialLunaCrystalDream:
+    kind: event
+    note: "가격 자료를 찾지 못했어요 (공지·커뮤니티 모두 이미지로만 표기). 일반 루나 크리스탈(3,900원)과 다를 수 있으니 '직접 입력'으로 넣어 주세요"
+  LunaCrystalSweet:
+    kind: fixed
+    price_date: 2018-09-20
+    price_source: "나무위키 '루나 크리스탈' (개당 3,900원, 2018년 도입 당시) ⚠ 오래된 값"
+    options: [{label: 낱개, count: 1, price: 3900, where: 캐시샵}]
+  LunaCrystalDream:
+    kind: fixed
+    price_date: 2018-09-20
+    price_source: "나무위키 '루나 크리스탈' (개당 3,900원, 2018년 도입 당시) ⚠ 오래된 값"
+    options: [{label: 낱개, count: 1, price: 3900, where: 캐시샵}]
+  GoldApple:
+    kind: fixed
+    note: "2026-09-17 판매 종료 (나무위키). 확률표는 참고용"
+  PlatinumApple:
+    kind: fixed
+    price_date: 2026-09-25
+    price_source: "나무위키 '골드 애플' (플래티넘 애플 1개 3,500원 · 33개 99,000원)"
+    options:
+      - {label: 낱개, count: 1, price: 3500, where: 캐시샵}
+      - {label: 33개, count: 33, price: 99000, where: 캐시샵}
+  NormalDyeCoupon:
+    kind: fixed
+    price_date: 2026-10-15
+    price_source: "나무위키 '메이플스토리/캐시 아이템' (800캐시)"
+    options: [{label: 낱개, count: 1, price: 800, where: 캐시샵}]
+  HairRandomBox:
+    kind: fixed
+    note: "캐시로 직접 살 수 없고 부티크 티켓으로 교환해요 (공식 '부티크 티켓 교환 아이템' 안내). 필요 티켓 수는 찾지 못했어요 — 티켓 1개 ≈ 1,007원 × 필요 개수로 '직접 입력'하세요"
+  FaceRandomBox:
+    kind: fixed
+    note: "캐시로 직접 살 수 없고 부티크 티켓으로 교환해요 (공식 '부티크 티켓 교환 아이템' 안내). 필요 티켓 수는 찾지 못했어요 — 티켓 1개 ≈ 1,007원 × 필요 개수로 '직접 입력'하세요"
+  RidingRandomBox:
+    kind: fixed
+    note: "가격·구매 방법 자료를 찾지 못했어요 (부티크 티켓 교환 상품으로 나온 적이 있음). '직접 입력'으로 넣어 주세요"
+  FaceDecoRandomBox:
+    kind: fixed
+    note: "가격·구매 방법 자료를 찾지 못했어요 (부티크 티켓 교환 상품으로 나온 적이 있음). '직접 입력'으로 넣어 주세요"

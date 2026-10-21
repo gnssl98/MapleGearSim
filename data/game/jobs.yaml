@@ -1,0 +1,35 @@
+# 지원 직업 설정 (잠재 프리셋·추옵 급수·환산 계산에 사용)
+# 근거: docs/research/10_hwansan_logic.md
+# weapon_constant: 무기상수×직업보정. 아델·렌은 오픈 API 최대 스탯공격력 역산으로 검증(오차 <0.002%, 2026-10-16)
+jobs:
+  adele:
+    name: 아델
+    main_stat: STR
+    sub_stat: DEX
+    attack: ATT
+    class_type: warrior
+    weapon: 튜너
+    weapon_constant: 1.3
+  night_lord:
+    name: 나이트로드
+    main_stat: LUK
+    sub_stat: DEX
+    attack: ATT
+    class_type: thief
+    weapon: 아대
+    weapon_constant: 1.75  # 나무위키 기준 (나이트로드 캐릭터로 미검증)
+  ren:
+    name: 렌
+    main_stat: STR
+    sub_stat: DEX
+    attack: ATT
+    class_type: warrior
+    weapon: 장검 (보조 여의보주)
+    weapon_constant: 1.3
+default_job: adele
+
+# 오픈 API character_class → job id
+class_map:
+  아델: adele
+  렌: ren
+  나이트로드: night_lord

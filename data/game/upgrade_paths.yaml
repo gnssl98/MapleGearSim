@@ -1,0 +1,61 @@
+# 부위별 다음 단계 장비 (직작 계산기·구매 상한가 "다음 단계"용)
+# 규칙: 같은 부위에서 지금 장비보다 착용 레벨이 높은 항목을 다음 단계로 보여 준다.
+# 실제 이름·레벨·아이콘 id 는 item_catalog.json (maplestory.io KMS 클라이언트 데이터,
+# scripts/fetch_item_catalog.py 로 생성)에서 찾는다.
+#   prefix: 방어구·무기 이름 앞부분. 카탈로그에서 "prefix 로 시작 + 같은 장비 분류 + 내 직업 계열" 장비를 고른다.
+#   name:   장신구처럼 직업 공통인 고정 이름.
+# 에테르넬은 모자·상의·하의·어깨장식만 있다 (신발·장갑·망토는 아케인셰이드가 최상위, KMS 389 기준).
+# 새 장비가 나오면 여기에 추가하고 스크립트를 다시 실행.
+
+parts:
+  hat:
+    - {tier: 루타비스, prefix: 하이네스, level: 150}
+    - {tier: 앱솔랩스, prefix: 앱솔랩스, level: 160}
+    - {tier: 아케인셰이드, prefix: 아케인셰이드, level: 200}
+    - {tier: 에테르넬, prefix: 에테르넬, level: 250}
+  top:
+    - {tier: 루타비스, prefix: 이글아이, level: 150}
+    - {tier: 에테르넬, prefix: 에테르넬, level: 250}      # 앱솔·아케인은 한벌옷
+  bottom:
+    - {tier: 루타비스, prefix: 트릭스터, level: 150}
+    - {tier: 에테르넬, prefix: 에테르넬, level: 250}
+  overall:
+    - {tier: 앱솔랩스, prefix: 앱솔랩스, level: 160}
+    - {tier: 아케인셰이드, prefix: 아케인셰이드, level: 200}  # 다음은 에테르넬 상의+하의 (두 부위라 각각 계산)
+  shoes:
+    - {tier: 앱솔랩스, prefix: 앱솔랩스, level: 160}
+    - {tier: 아케인셰이드, prefix: 아케인셰이드, level: 200}
+  gloves:
+    - {tier: 앱솔랩스, prefix: 앱솔랩스, level: 160}
+    - {tier: 아케인셰이드, prefix: 아케인셰이드, level: 200}
+  cape:
+    - {tier: 앱솔랩스, prefix: 앱솔랩스, level: 160}
+    - {tier: 아케인셰이드, prefix: 아케인셰이드, level: 200}
+  shoulder:
+    - {tier: 앱솔랩스, prefix: 앱솔랩스, level: 160}
+    - {tier: 아케인셰이드, prefix: 아케인셰이드, level: 200}
+    - {tier: 에테르넬, prefix: 에테르넬, level: 250}
+  weapon:  # 같은 무기 분류(투핸드소드·튜너 등)에서 고른다. 제네시스(해방)는 스타포스 불가라 제외
+    - {tier: 루타비스, prefix: [라이온하트, 드래곤테일, 팔콘윙즈, 레이븐혼, 샤크투스], level: 150}
+    - {tier: 앱솔랩스, prefix: 앱솔랩스, level: 160}
+    - {tier: 아케인셰이드, prefix: 아케인셰이드, level: 200}
+  earring:
+    - {tier: 보스 장신구, name: 데아 시두스 이어링, level: 130}
+    - {tier: 여명, name: 에스텔라 이어링, level: 160}
+    - {tier: 칠흑, name: 커맨더 포스 이어링, level: 200}
+  face:
+    - {tier: 여명, name: 트와일라이트 마크, level: 140}
+    - {tier: 칠흑, name: 루즈 컨트롤 머신 마크, level: 160}
+  eye:
+    - {tier: 보스 장신구, name: 블랙빈 마크, level: 135}
+    - {tier: 칠흑, name: 마력이 깃든 안대, level: 160}
+  belt:
+    - {tier: 보스 장신구, name: 골든 클로버 벨트, level: 140}
+    - {tier: 칠흑, name: 몽환의 벨트, level: 200}
+  pendant:
+    - {tier: 보스 장신구, name: 도미네이터 펜던트, level: 140}
+    - {tier: 여명, name: 데이브레이크 펜던트, level: 140}
+    - {tier: 칠흑, name: 고통의 근원, level: 160}
+  ring:
+    - {tier: 여명, name: 여명의 가디언 엔젤 링, level: 160}
+    - {tier: 칠흑, name: 거대한 공포, level: 200}

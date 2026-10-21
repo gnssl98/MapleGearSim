@@ -1,0 +1,14 @@
+# MVP 등급 기준·혜택 (MVP 작 비교 탭)
+# 기준 금액: 최근 13주 구매 금액(넥슨캐시). 2025-09-17 개편 기준 커뮤니티 정리값 ⚠
+#   (공식 선정 기준 페이지는 스크립트로 그려져 자동 확인 불가 — 게임 내 MVP 안내에서 확인 후 수정)
+# 스타포스 할인·판매 수수료: 공식 MVP 혜택 페이지 (1~17성 강화 할인, 실버 이상 경매장 판매 수수료 3%)
+# 블랙의 스타포스 할인은 공식 표에 없어 레드와 같다고 가정 ⚠
+source: https://gi.maplestory.nexon.com/Guide/GameInformation/MVPMembership/Benefit
+grades:
+  - {id: bronze,  name: 브론즈, cash: 150000,  starforce: 0,    sell_fee: 0.05}
+  - {id: silver,  name: 실버,   cash: 300000,  starforce: 0.03, sell_fee: 0.03}
+  - {id: gold,    name: 골드,   cash: 600000,  starforce: 0.05, sell_fee: 0.03}
+  - {id: diamond, name: 다이아, cash: 900000,  starforce: 0.10, sell_fee: 0.03}
+  - {id: red,     name: 레드,   cash: 1500000, starforce: 0.10, sell_fee: 0.03}
+  - {id: black,   name: 블랙,   cash: 2500000, starforce: 0.10, sell_fee: 0.03}
+none_sell_fee: 0.05

@@ -1,0 +1,36 @@
+# 추가옵션(추옵) 수치
+# 근거: docs/research/04 §4, docs/research/09_flame_verification.md (수치 공식 검증 완료, 2026-10-15)
+version: kms_2026-03-19
+
+methods:
+  meso_reset: {label: 추가옵션 재설정(메소), tiers: [0, 0.29, 0.45, 0.25, 0.01], cost_meso: 3000000}
+  black:      {label: 검은 환생의 불꽃,      tiers: [0, 0.29, 0.45, 0.25, 0.01]}
+  burning:    {label: 타오르는 환생의 불꽃,  tiers: [0.20, 0.30, 0.36, 0.14, 0]}
+  abyss:      {label: 심연의 환생의 불꽃,    tiers: [0, 0, 0.63, 0.34, 0.03]}
+
+boss_tier_bonus: 2               # 보스 장비: 단계 +2 (3~7단계), 항상 4개
+option_count_probs: [0.40, 0.40, 0.16, 0.04]   # 일반 장비 환불 옵션 개수 1/2/3/4개
+
+# 옵션 풀 (카테고리 내 균등). 각 19종
+pools:
+  armor: [STR, DEX, INT, LUK, STR+DEX, STR+INT, STR+LUK, DEX+INT, DEX+LUK, INT+LUK,
+          HP, MP, REQ_LV, DEF, ATT, MATT, SPEED, JUMP, ALL%]
+  weapon: [STR, DEX, INT, LUK, STR+DEX, STR+INT, STR+LUK, DEX+INT, DEX+LUK, INT+LUK,
+           HP, MP, REQ_LV, DEF, ATT, MATT, BOSS%, DMG%, ALL%]
+
+# 단계 t 에서의 수치
+values:
+  single_stat_per_tier: "floor(L/20)+1"   # 250제 보스 장비는 L=220 으로 계산 → 에테르넬 12/단계 (검증)
+  dual_stat_per_tier: "floor(L/40)+1"
+  armor_att_per_tier: 1                   # 아이템 레벨 60 이상 (검증)
+  all_stat_pct_per_tier: 1
+  boss_pct_per_tier: 2
+  dmg_pct_per_tier: 1
+boss_250_stat_level: 220
+# 무기 공/마: ceil(기본공 × (floor(L/40)+1) × t × 1.1^(t - exp_offset) / 100)
+#   보스 무기 t=3..7, exp_offset=3 / 일반 무기 t=1..5, exp_offset=1 (일반은 GMS 자료 기준 ⚠)
+#   검증: 아케인셰이드 투핸드소드(기본 295) 54/78/108/142/182, 제네시스(340) 1추 210
+weapon_attack: {boss_exp_offset: 3, normal_exp_offset: 1}
+
+# 급수 환산 기본 계수 (사용자 수정 가능)
+score_coef: {main: 1, sub: 0.1, att: 4, all_pct: 10}
